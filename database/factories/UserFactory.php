@@ -24,11 +24,18 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => static::$password ??= Hash::make('password'), // Contraseña por defecto: 'password'
             'remember_token' => Str::random(10),
+            // Columnas añadidas por ti:
+            'nombre_usuario' => $this->faker->unique()->userName(),
+            'rol' => $this->faker->randomElement(['usuario', 'editor', 'administrador']), // O los roles que uses
+            'biografia' => $this->faker->paragraph(2),
+            'avatar' => $this->faker->imageUrl(640, 480, 'people', true), // URL de imagen de avatar
+            'fecha_registro' => $this->faker->dateTimeBetween('-2 years', 'now')->setTime($this->faker->numberBetween(3, 23), $this->faker->numberBetween(0, 59), $this->faker->numberBetween(0, 59))->format('Y-m-d H:i:s'),
+            'activo' => $this->faker->boolean(),
         ];
     }
 

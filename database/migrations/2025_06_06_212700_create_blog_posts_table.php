@@ -18,16 +18,20 @@ return new class extends Migration
             $table->longText('contenido'); // Contenido completo del post
             $table->text('resumen'); // Resumen del post
             $table->string('imagen_destacada', 255)->nullable(); // URL de la imagen destacada, puede ser nula
-    
+
             // Claves Foráneas
             $table->foreignId('autor_id')->constrained('users')->onDelete('cascade'); // ID del usuario autor (FK a users)
             $table->foreignId('categoria_id')->constrained('blog_categorias')->onDelete('cascade'); // ID de la categoría (FK a blog_categorias)
-    
-            $table->timestamp('fecha_publicacion')->useCurrent(); // Fecha y hora de publicación
-            $table->timestamp('ultima_actualizacion')->nullable(); // Última fecha de actualización, puede ser nula
+
+            // Eliminamos estas líneas y usamos timestamps()
+            // $table->timestamp('fecha_publicacion')->useCurrent(); // Fecha y hora de publicación
+            // $table->timestamp('ultima_actualizacion')->nullable(); // Última fecha de actualización, puede ser nula
+
             $table->boolean('activo')->default(true); // Si el post está activo
             $table->integer('numero_vistas')->default(0); // Número de vistas
-            // No se usa timestamps() aquí ya que tenemos fechas custom
+
+            // ¡Añade esta línea! Esto creará 'created_at' y 'updated_at'
+            $table->timestamps(); 
         });
     }
 
