@@ -1,61 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+﻿Compi-Project
+Este es el repositorio del proyecto "Compi-Project", una aplicación web desarrollada con Laravel que incluye un robusto sistema de gestión de usuarios con autenticación basada en roles, una interfaz de usuario mejorada y funcionalidades esenciales para su despliegue y mantenimiento.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Índice
+Visión General del Proyecto
 
-## About Laravel
+Funcionalidades Implementadas
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Requisitos del Sistema
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Configuración e Instalación
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Uso de la Aplicación
 
-## Learning Laravel
+Estructura de Roles y Acceso
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Pruebas Automatizadas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Optimización de Rendimiento
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Consideraciones para el Despliegue
 
-## Laravel Sponsors
+Contacto
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. Visión General del Proyecto
+"Compi-Project" es una aplicación web construida con el framework PHP Laravel. Su objetivo principal es proporcionar una plataforma con un sistema de autenticación seguro y una administración de usuarios eficiente. Es la base para futuras funcionalidades, como la gestión de recursos compartidos.
 
-### Premium Partners
+2. Funcionalidades Implementadas
+Hasta la fecha, se han implementado las siguientes características clave:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Autenticación de Usuarios: Registro, inicio de sesión, recuperación de contraseña (gestionado por Laravel Breeze).
 
-## Contributing
+Gestión de Roles: Los usuarios pueden tener roles de administrador o usuario.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Control de Acceso Basado en Roles (RBAC):
 
-## Code of Conduct
+Un AdminMiddleware asegura que solo los usuarios con el rol administrador puedan acceder a ciertas rutas (ej. la gestión de usuarios).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Las rutas sensibles están protegidas por el middleware auth para requerir autenticación.
 
-## Security Vulnerabilities
+CRUD Completo de Usuarios:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Crear: Los administradores pueden añadir nuevos usuarios a través de un formulario dedicado.
 
-## License
+Leer (Listar): Un listado paginado y con funcionalidad de búsqueda permite a los administradores ver y filtrar usuarios.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Actualizar: Los administradores pueden editar los detalles de los usuarios existentes.
+
+Eliminar: Los administradores pueden eliminar usuarios.
+
+Interfaz de Usuario (UI/UX) Mejorada:
+
+Vistas de gestión de usuarios (index.blade.php, create.blade.php, edit.blade.php) estilizadas con Tailwind CSS para una apariencia moderna y limpia.
+
+Uso de un layout principal coherente (layouts/app.blade.php).
+
+Mensajes Flash: Notificaciones de éxito y error claras para el usuario tras operaciones CRUD.
+
+Notificaciones por Correo Electrónico: Envío de un correo de bienvenida a los nuevos usuarios creados por el administrador (configurado para usar el log driver en desarrollo).
+
+Seguridad: Implementación de protección CSRF (Cross-Site Request Forgery) y prevención de XSS (Cross-Site Scripting) gracias a las características por defecto de Laravel.
+
+Pruebas Automatizadas: Se han añadido pruebas de características (Feature Tests) para verificar el control de acceso basado en roles y el flujo de autenticación.
+
+Optimización de Rendimiento: La aplicación está configurada para caching de configuración, rutas y vistas, y optimización del autocargador de Composer para un mejor rendimiento en producción.
+
+3. Requisitos del Sistema
+Para ejecutar este proyecto localmente, necesitarás:
+
+PHP: ^8.1
+
+Composer: ^2.0
+
+Node.js y npm: Para compilar los assets (Tailwind CSS, JavaScript).
+
+Base de Datos: MySQL (o PostgreSQL, SQLite, etc.).
+
+Servidor Web: Apache o Nginx (o el servidor de desarrollo de PHP/Laravel).
+
+Git: Para el control de versiones.
+
+4. Configuración e Instalación
+Sigue estos pasos para poner el proyecto en funcionamiento en tu máquina local:
+
+Clonar el Repositorio:
+
+git clone https://github.com/SrTic/compi_project.git
+cd compi_project
+
+Instalar Dependencias de Composer:
+
+composer install
+
+Configurar el Archivo de Entorno (.env):
+
+Copia el archivo de ejemplo:
+
+cp .env.example .env
+
+Abre el archivo .env y configura tus credenciales de base de datos (DB_DATABASE, DB_USERNAME, DB_PASSWORD), la URL de tu aplicación (APP_URL), y asegúrate de que APP_NAME esté configurado.
+
+Configura el correo para pruebas (se escribirán en storage/logs/laravel.log):
+
+MAIL_MAILER=log
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+Generar la Clave de la Aplicación:
+
+php artisan key:generate
+
+Ejecutar Migraciones de Base de Datos:
+
+php artisan migrate
+
+Instalar y Compilar Dependencias de NPM:
+
+npm install
+npm run dev  # Para desarrollo y observación de cambios
+# Para producción: npm run build
+
+Crear Usuario Administrador (opcional, pero recomendado para pruebas):
+
+Abre Tinker: php artisan tinker
+
+Crea el usuario:
+
+App\Models\User::create([
+    'name' => 'Admin',
+    'email' => 'admin@example.com',
+    'password' => Hash::make('password'),
+    'rol' => 'administrador',
+]);
+
+Sale de Tinker: exit
+
+Iniciar el Servidor de Desarrollo:
+
+php artisan serve
+
+La aplicación estará disponible en http://127.0.0.1:8000.
+
+5. Uso de la Aplicación
+Página de Inicio: http://127.0.0.1:8000/
+
+Login: http://127.0.0.1:8000/login
+
+Registro: http://127.0.0.1:8000/register
+
+Dashboard (requiere autenticación): http://127.0.0.1:8000/dashboard
+
+Gestión de Usuarios (requiere rol de administrador): http://127.0.0.1:8000/usuarios
+
+Desde aquí, puedes navegar a usuarios/create y usuarios/{id}/edit.
+
+6. Estructura de Roles y Acceso
+El proyecto implementa un sistema de roles básico:
+
+usuario: Rol por defecto para usuarios registrados. Pueden acceder al dashboard y rutas de perfil.
+
+administrador: Rol especial con acceso a áreas restringidas, como la gestión de usuarios.
+
+El AdminMiddleware (ubicado en app/Http/Middleware/AdminMiddleware.php) se encarga de proteger las rutas que requieren el rol de administrador.
+
+7. Pruebas Automatizadas
+Se han añadido pruebas de características para el control de acceso.
+Para ejecutar las pruebas:
+
+php artisan test
+
+Para ejecutar solo las pruebas de gestión de usuarios:
+
+php artisan test --filter UserManagementTest
+
+8. Optimización de Rendimiento
+Para optimizar el rendimiento en producción, se utilizan los siguientes comandos de Artisan:
+
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+composer dump-autoload --optimize
+
+9. Consideraciones para el Despliegue
+Para desplegar la aplicación en un servidor de producción real:
+
+Entorno: Configurar un servidor web (Nginx/Apache), PHP y la base de datos.
+
+Clonar: Clonar el repositorio desde GitHub.
+
+Dependencias: composer install --no-dev --optimize-autoloader.
+
+.env: Configurar el archivo .env para producción (APP_ENV=production, credenciales DB reales, MAIL_MAILER real si se usa).
+
+key:generate: php artisan key:generate.
+
+Caché: Ejecutar php artisan config:cache, php artisan route:cache, php artisan view:cache.
+
+Migraciones: php artisan migrate --force.
+
+Assets: npm install y npm run build en el servidor.
+
+Permisos: Configurar permisos de escritura para las carpetas storage y bootstrap/cache.
+
+Servidor Web: Apuntar el DocumentRoot del servidor web a la carpeta public de tu proyecto.
+
+10. Contacto
+Para preguntas o colaboraciones, contactar a [Héctor/80hector@gmail.com/https://github.com/SrTic/compi_project.git].
